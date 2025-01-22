@@ -1,17 +1,20 @@
-// src/App.js
-import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import ItemList from './ItemList';
-import ItemDetail from './ItemDetail';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ItemList from "./ItemList";
+import ItemDetail from "./ItemDetail";
 
 const App = () => {
   return (
-    <BrowserRouter>
+    <div>
+        {/* Do not remove the main div */}
+     <Router>
       <Routes>
         <Route path="/" element={<ItemList />} />
         <Route path="/items/:id" element={<ItemDetail />} />
       </Routes>
-    </BrowserRouter>
+    </Router>
+    </div>
+   
   );
 };
 
