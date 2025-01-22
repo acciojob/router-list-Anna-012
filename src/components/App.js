@@ -1,14 +1,13 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import ItemList from "./ItemList";
 import ItemDetail from "./ItemDetail";
-
+import ItemList from "./ItemList";
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<ItemList />} />
-        <Route path="/items/:itemId" element={<ItemDetail />} />
+        <Route path="/item/:id" element={<ItemDetail />} />
       </Routes>
     </Router>
   );
