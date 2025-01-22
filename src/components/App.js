@@ -1,25 +1,19 @@
+
 import React from "react";
-import { Routes, Route } from "react-router-dom";
-import Items from "./Items";
-import Item1 from "./Item1";
-import Item2 from "./Item2";
-import Item3 from "./Item3";
+import './../styles/App.css';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import ItemList from "./ItemList";
+import ItemDetail from "./ItemDetail";
 
 const App = () => {
   return (
-    <div>
-      
-      {/* Do not remove the main div */}
-      
-      <Routes>
-        <Route path="/" element={<Items />}/>
-          <Route path="/items/1" element={<Item1 />} />
-          <Route path="/items/2" element={<Item2 />} />
-          <Route path="/items/3" element={<Item3 />} />
-        
-      </Routes>
-    </div>
+    <Router>
+      <Switch>
+        <Route exact path="/" component={ItemList} />
+        <Route path="/item/:id" component={ItemDetail} />
+      </Switch>
+    </Router>
   );
-}
+};
 
 export default App;
