@@ -3,19 +3,15 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ItemList from "./ItemList";
 import ItemDetail from "./ItemDetail";
 
-const App = () => {
+function App() {
   return (
-    <div>
-        {/* Do not remove the main div */}
-     <Router>
+    <Router>
       <Routes>
         <Route path="/" element={<ItemList />} />
-        <Route path="/items/:id" element={<ItemDetail />} />
+        <Route path="/items/:itemId" element={<ItemDetail />} />
       </Routes>
     </Router>
-    </div>
-   
   );
-};
+}
 
 export default App;
