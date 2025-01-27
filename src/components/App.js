@@ -1,24 +1,37 @@
-import React from "react";
-import './../styles/App.css';
-import { Routes,Route } from "react-router-dom";
-import Item1 from "./Item1";
-import Item2 from "./Item2";
-import Item3 from "./Item3";
-import Home from "./Home";
+import React from 'react';
+import { BrowserRouter as Router, Route, NavLink, Routes } from 'react-router-dom';
+import ItemDetail from '../components/ItemDetail';
+// Dummy data for items
+const items = [
+  { id: 1, name: 'Item 1', description: 'Description for Item 1' },
+  { id: 2, name: 'Item 2', description: 'Description for Item 2' },
+  { id: 3, name: 'Item 3', description: 'Description for Item 3' },
+];
 
-const App = () => {
-  return (
-    <div>
-        {/* Do not remove the main div */}
-        <h1>Item List</h1>
-        <Routes>
-          <Route path="/" element={<Home/>}/>
-          <Route path="/item/1" element={<Item1/>}/>
-          <Route path="/item/2" element={<Item2/>}/>
-          <Route path="/item/3" element={<Item3/>}/>
-        </Routes>
-    </div>
-  )
-}
+// ItemList component to display the list of items
+const ItemList = () => (
+  <div>
+    <h1>Item List</h1>
+    <ul>
+      {items.map(item => (
+        <li key={item.id}>
+          <NavLink to={`/items/${item.id}`}>{item.name}</NavLink>
+        </li>
+      ))}
+    </ul>
+  </div>
+);
 
-export default App
+
+
+// App component with React Router
+const App = () => (
+  <Router>
+    <Routes>
+      <Route path="/" element={<ItemList />} />
+      <Route path="/items/:id" element={<ItemDetail items={items} />} />
+    </Routes>
+  </Router>
+);
+
+export default App;
